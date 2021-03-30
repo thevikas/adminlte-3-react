@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {Route, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Dashboard from '@pages/Dashboard';
+import Projects from '@pages/Projects';
 import Profile from '@pages/profile/Profile';
 
 import axios from '../../utils/axios';
@@ -11,15 +12,15 @@ import MenuSidebar from './menu-sidebar/MenuSidebar';
 import PageLoading from '../../components/page-loading/PageLoading';
 import * as ActionTypes from '../../store/actions';
 
-const Main = ({onUserLoad}) => {
+const Main = ({ onUserLoad }) => {
     const [appLoadingState, updateAppLoading] = useState(false);
     const [menusidebarState, updateMenusidebarState] = useState({
-        isMenuSidebarCollapsed: false
+        isMenuSidebarCollapsed: false,
     });
 
     const toggleMenuSidebar = () => {
         updateMenusidebarState({
-            isMenuSidebarCollapsed: !menusidebarState.isMenuSidebarCollapsed
+            isMenuSidebarCollapsed: !menusidebarState.isMenuSidebarCollapsed,
         });
     };
 
@@ -28,14 +29,14 @@ const Main = ({onUserLoad}) => {
         const fetchProfile = async () => {
             try {
                 const response = await axios.get('/v1/users/profile');
-                onUserLoad({...response.data});
+                onUserLoad({ ...response.data });
                 updateAppLoading(false);
             } catch (error) {
                 updateAppLoading(false);
             }
         };
         fetchProfile();
-        return () => {};
+        return () => { };
     }, [onUserLoad]);
 
     document.getElementById('root').classList.remove('register-page');
@@ -69,6 +70,7 @@ const Main = ({onUserLoad}) => {
                         <Switch>
                             <Route exact path="/profile" component={Profile} />
                             <Route exact path="/" component={Dashboard} />
+                            <Route exact path="/projects" component={Projects} />
                         </Switch>
                     </section>
                 </div>
@@ -77,7 +79,7 @@ const Main = ({onUserLoad}) => {
                     id="sidebar-overlay"
                     role="presentation"
                     onClick={toggleMenuSidebar}
-                    onKeyDown={() => {}}
+                    onKeyDown={() => { }}
                 />
             </>
         );
@@ -87,12 +89,11 @@ const Main = ({onUserLoad}) => {
 };
 
 const mapStateToProps = (state) => ({
-    user: state.auth.currentUser
+    user: state.auth.currentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onUserLoad: (user) =>
-        dispatch({type: ActionTypes.LOAD_USER, currentUser: user})
+    onUserLoad: (user) => dispatch({ type: ActionTypes.LOAD_USER, currentUser: user }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

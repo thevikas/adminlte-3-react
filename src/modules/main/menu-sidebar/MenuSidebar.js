@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {NavLink, Link} from 'react-router-dom';
-import {useTranslation} from 'react-i18next';
+import { connect } from 'react-redux';
+import { NavLink, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-const MenuSidebar = ({user}) => {
-    const {t} = useTranslation();
+const MenuSidebar = ({ user }) => {
+    const { t } = useTranslation();
 
     return (
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -13,7 +13,7 @@ const MenuSidebar = ({user}) => {
                     src="/img/logo.png"
                     alt="AdminLTE Logo"
                     className="brand-image img-circle elevation-3"
-                    style={{opacity: '.8'}}
+                    style={{ opacity: '.8' }}
                 />
                 <span className="brand-text font-weight-light">AdminLTE 3</span>
             </Link>
@@ -45,6 +45,75 @@ const MenuSidebar = ({user}) => {
                                 <p>{t('menusidebar.label.dashboard')}</p>
                             </NavLink>
                         </li>
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Pages
+                                <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../examples/invoice.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Invoice</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../examples/profile.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Profile</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../examples/e-commerce.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>E-commerce</p>
+                                    </a>
+                                </li>
+                                <NavLink to="/projects" exact className="nav-link">
+                                    <i className="far fa-circle nav-icon" />
+                                    <p>{t('menusidebar.label.projects')}</p>
+                                </NavLink>
+                                <li class="nav-item">
+                                    <a href="../examples/project-add.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project Add</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../examples/project-edit.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project Edit</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../examples/project-detail.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project Detail</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../examples/contacts.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Contacts</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../examples/faq.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>FAQ</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../examples/contact-us.html" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Contact us</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -53,7 +122,7 @@ const MenuSidebar = ({user}) => {
 };
 
 const mapStateToProps = (state) => ({
-    user: state.auth.currentUser
+    user: state.auth.currentUser,
 });
 
 export default connect(mapStateToProps, null)(MenuSidebar);
