@@ -72,6 +72,7 @@
       "menusidebar": {
         "label": {
             "dashboard": "Dashboard",
+            "datatables": "DataTables",
             "projects": "Projects"
         }
       },

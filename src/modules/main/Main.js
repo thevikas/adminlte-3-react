@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Dashboard from '@pages/Dashboard';
 import Projects from '@pages/Projects';
 import Profile from '@pages/profile/Profile';
-
+import ReactTable1 from './tables/ReactTable1';
 import axios from '../../utils/axios';
 import Header from './header/Header';
 import Footer from './footer/Footer';
@@ -71,6 +71,7 @@ const Main = ({ onUserLoad }) => {
                             <Route exact path="/profile" component={Profile} />
                             <Route exact path="/" component={Dashboard} />
                             <Route exact path="/projects" component={Projects} />
+                            <Route exact path="/tables/react-table1" component={ReactTable1} />
                         </Switch>
                     </section>
                 </div>

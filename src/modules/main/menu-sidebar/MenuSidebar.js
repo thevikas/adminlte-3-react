@@ -47,6 +47,33 @@ const MenuSidebar = ({ user }) => {
                         </li>
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Tables
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="../tables/simple.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Simple Tables</p>
+                                </a>
+                            </li>
+                            <NavLink to="/tables/react-table1" exact className="nav-link">
+                                <i className="far fa-circle nav-icon" />
+                                <p>{t('menusidebar.label.datatables')}</p>
+                            </NavLink>
+                            <li class="nav-item">
+                                <a href="../tables/jsgrid.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>jsGrid</p>
+                                </a>
+                            </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Pages
